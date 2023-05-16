@@ -1,0 +1,25 @@
+In our implementation of WUGraph.java, we used the following data structures and design decisions:
+
+1. We used a hash table to map the application's vertex objects to our internal vertex objects. 
+This allowed us to achieve O(1) time complexity for isVertex() and other operations.
+
+2. To ensure getVertices() runs in O(|V|) time, we maintained a doubly-linked list of vertices. 
+We also made sure that our hash table resizes in both directions to keep the load factor constant.
+
+3. For adjacency lists, we used doubly-linked lists to store edges for each vertex. 
+This allowed us to achieve O(1) time complexity for removeEdge().
+
+4. We chose to implement the half-edge approach (option [4i]) to ensure removeVertex() runs in O(d) time. 
+Each half-edge has forward and backward references, as well as a reference to its partner. 
+This allowed us to remove half-edge partners from the adjacency lists of the vertex's neighbors in O(1) time per edge.
+
+5. We used a separate hash table for edges to support removeEdge(), isEdge(), and weight() in O(1) time. 
+We used the provided VertexPair class as the key for our edge hash table.
+
+6. We maintained counts of the vertices, edges, and degrees of each vertex to support vertexCount(), edgeCount(), and degree() in O(1) time.
+
+In our implementation of Kruskal.java, we followed the steps of Kruskal's algorithm as described in the project description. 
+We used multiple calls to getNeighbors() to obtain the complete list of edges and implemented a sorting algorithm to sort the edges by weight in O(|E| log |E|) time. 
+We used the provided DisjointSets.java class to find the edges of the minimum spanning tree.
+
+Overall, our implementation adheres to the design decisions discussed in the project description and achieves the desired time complexities for all operations.
